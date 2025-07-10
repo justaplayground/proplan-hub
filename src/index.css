@@ -2,41 +2,81 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* ProPlan Design System - Modern Project Management Theme */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Core Background & Text */
+    --background: 240 10% 98%;
+    --foreground: 210 12% 12%;
 
+    /* Card & Surface Colors */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 210 12% 12%;
+    --card-shadow: 210 20% 85%;
 
+    /* Popover & Modal */
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 210 12% 12%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary Brand Colors - Modern Blue */
+    --primary: 214 95% 48%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 214 85% 52%;
+    --primary-light: 214 100% 96%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary - Warm Gray */
+    --secondary: 210 15% 95%;
+    --secondary-foreground: 210 12% 12%;
+    --secondary-hover: 210 15% 92%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted - Subtle Text & Backgrounds */
+    --muted: 210 15% 95%;
+    --muted-foreground: 210 10% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent - Teal for Actions */
+    --accent: 175 85% 45%;
+    --accent-foreground: 0 0% 100%;
+    --accent-hover: 175 75% 48%;
+    --accent-light: 175 85% 96%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Status Colors */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    --success-light: 142 76% 95%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --warning: 45 93% 47%;
+    --warning-foreground: 0 0% 100%;
+    --warning-light: 45 93% 95%;
 
-    --radius: 0.5rem;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --destructive-light: 0 84% 96%;
+
+    /* UI Elements */
+    --border: 210 20% 88%;
+    --input: 210 20% 88%;
+    --ring: 214 95% 48%;
+
+    /* Layout & Spacing */
+    --radius: 0.75rem;
+    --radius-sm: 0.5rem;
+    --radius-lg: 1rem;
+
+    /* Custom Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(214 95% 48%), hsl(175 85% 45%));
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%), hsl(210 15% 98%));
+    --gradient-header: linear-gradient(135deg, hsl(214 95% 48%), hsl(214 85% 52%));
+
+    /* Shadows */
+    --shadow-card: 0 2px 8px -2px hsl(210 20% 85% / 0.3);
+    --shadow-hover: 0 4px 16px -4px hsl(210 20% 75% / 0.4);
+    --shadow-focus: 0 0 0 3px hsl(214 95% 48% / 0.2);
+
+    /* Animation Durations */
+    --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,5 +141,28 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+
+  /* Custom utility classes */
+  .bg-grid-white\/10 {
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  }
+
+  /* Animation classes */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .delay-300 {
+    animation-delay: 300ms;
   }
 }
