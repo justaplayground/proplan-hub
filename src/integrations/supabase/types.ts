@@ -477,7 +477,14 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      is_board_admin: {
+        Args: { _board_id: string; _user_id: string }
+        Returns: boolean
+      }
+      is_board_member: {
+        Args: { _board_id: string; _user_id: string }
+        Returns: boolean
+      }
     }
     Enums: {
       board_visibility: "private" | "workspace" | "public"
