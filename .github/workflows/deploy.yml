@@ -33,6 +33,8 @@ jobs:
           path: dist
 
   # Deploy to Dellbuntu | My Home Server
+  # NOTE: This requires passwordless sudo for gh-runner user
+  # Run on server: sudo visudo and add: gh-runner ALL=(ALL) NOPASSWD: ALL
   deploy-frontend:
     runs-on: [self-hosted, home, dellbuntu]
     needs: build-frontend
@@ -45,7 +47,7 @@ jobs:
       - name: Prepare nginx deploy path
         run: |
           sudo mkdir -p /var/www/proplan-hub
-          sudo chown -R cicd:cicd /var/www/proplan-hub
+          sudo chown -R gh-runner:gh-runner /var/www/proplan-hub
 
       - name: Deploy frontend to nginx folder
         run: |
@@ -55,3 +57,36 @@ jobs:
           sudo ln -sf /etc/nginx/sites-available/proplan-hub /etc/nginx/sites-enabled/
           sudo nginx -t
           sudo systemctl restart nginx
+
+      - name: Cleanup artifacts
+        if: success()
+        run: |
+          # Clean up downloaded artifacts from runner
+          rm -rf dist
+          # Clean up any temporary files
+          rm -rf /tmp/proplan-hub-* || true
+
+  # Cleanup GitHub Actions artifacts
+  cleanup-artifacts:
+    runs-on: ubuntu-latest
+    needs: [build-frontend, deploy-frontend]
+    if: always()
+    steps:
+      - name: Delete artifacts
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const artifacts = await github.rest.actions.listWorkflowRunArtifacts({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              run_id: context.runId,
+            });
+            
+            for (const artifact of artifacts.data.artifacts) {
+              await github.rest.actions.deleteArtifact({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                artifact_id: artifact.id,
+              });
+              console.log(`Deleted artifact: ${artifact.name}`);
+            }
