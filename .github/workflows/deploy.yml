@@ -1,14 +1,14 @@
-name: 🚀 Deploy to Self-Hosted Ubuntu | VPS Sieu Toc
+name: 🚀 Deploy to Nginx | Dellbuntu
 
 on:
   push:
     branches:
       - main
 env:
-  NGINX_SERVER_NAME: "justdemo.work"
+  NGINX_SERVER_NAME: "https://justdemo.work"
 
 jobs:
-  # build on Github Ubuntu to save the resource
+  # Build on Github Ubuntu to save the resource
   build-frontend:
     runs-on: ubuntu-latest
     steps:
@@ -33,6 +33,7 @@ jobs:
           name: proplan-hub-dist
           path: dist
 
+  # Deploy to Dellbuntu | My Home Server
   deploy-frontend:
     runs-on: [self-hosted, home, dellbuntu]
     needs: build-frontend
