@@ -5,7 +5,7 @@ on:
     branches:
       - main
 env:
-  NGINX_SERVER_NAME: "https://justdemo.work"
+  NGINX_SERVER_NAME: "justdemo.work"
 
 jobs:
   # Build on Github Ubuntu to save the resource
