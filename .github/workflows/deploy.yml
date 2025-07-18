@@ -29,7 +29,7 @@ jobs:
           npm run build
           # Replace placeholder with actual server name
           sed -i "s/\${NGINX_SERVER_NAME}/${{ env.NGINX_SERVER_NAME }}/g" nginx.conf
-          cp nginx.conf dist/
+          cp nginx.modular.conf dist/
 
       - name: Upload built artifacts
         uses: actions/upload-artifact@v4
@@ -58,8 +58,9 @@ jobs:
         run: |
           sudo rm -rf /var/www/proplan-hub/dist
           sudo cp -r dist /var/www/proplan-hub/dist
-          sudo cp -r dist/nginx.conf /etc/nginx/sites-available/proplan-hub
-          sudo ln -sf /etc/nginx/sites-available/proplan-hub /etc/nginx/sites-enabled/
+          sudo cp -r dist/nginx.modular.conf /etc/nginx/includes/projects/proplan-hub.conf
+          # currently using modular style nginx config
+          # sudo ln -sf /etc/nginx/includes/projects/proplan-hub.conf /etc/nginx/includes/proplan-hub.conf  
           sudo nginx -t
           sudo systemctl restart nginx
 
@@ -86,7 +87,7 @@ jobs:
               repo: context.repo.repo,
               run_id: context.runId,
             });
-            
+
             for (const artifact of artifacts.data.artifacts) {
               await github.rest.actions.deleteArtifact({
                 owner: context.repo.owner,

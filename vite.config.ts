@@ -1,12 +1,12 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
-
 // Optional: import vite-plugin-compression for gzip/brotli
-// import viteCompression from 'vite-plugin-compression';
+import viteCompression from 'vite-plugin-compression';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  base: "/proplan-hub/",
   server: {
     host: "::",
     port: 8080,
@@ -14,7 +14,7 @@ export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
     // Optional: enable gzip/brotli compression for production builds
-    // mode === 'production' && viteCompression({ algorithm: 'brotliCompress' }),
+    mode === 'production' && viteCompression({ algorithm: 'brotliCompress' }),
   ].filter(Boolean),
   resolve: {
     alias: {
