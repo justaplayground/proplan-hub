@@ -18,7 +18,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <BrowserRouter basename="/proplan-hub">
         <AuthProvider>
           <Routes>
             <Route path="/" element={<Index />} />
