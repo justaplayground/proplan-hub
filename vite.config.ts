@@ -6,7 +6,7 @@ import viteCompression from 'vite-plugin-compression';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: "/proplan-hub/",
+  base: "/proplan-hub/", // remove this when the project is deployed as a standalone
   server: {
     host: "::",
     port: 8080,
