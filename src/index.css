@@ -59,9 +59,10 @@
     --ring: 214 95% 48%;
 
     /* Layout & Spacing */
-    --radius: 0.75rem;
-    --radius-sm: 0.5rem;
-    --radius-lg: 1rem;
+    --radius: 0.5rem;
+    --radius-sm: 0.25rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
 
     /* Custom Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(214 95% 48%), hsl(175 85% 45%));

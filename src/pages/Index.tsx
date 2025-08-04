@@ -2,15 +2,23 @@ import { Header } from "@/components/landing/Header";
 import { Hero } from "@/components/landing/Hero";
 import { Features } from "@/components/landing/Features";
 import { CTA } from "@/components/landing/CTA";
+import { motion } from "framer-motion";
+import { pageTransitionVariants } from "@/components/ui/animations";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <motion.div 
+      className="min-h-screen"
+      variants={pageTransitionVariants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+    >
       <Header />
       <Hero />
       <Features />
       <CTA />
-    </div>
+    </motion.div>
   );
 };
 
