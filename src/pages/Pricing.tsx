@@ -20,6 +20,7 @@ import {
   CreditCard
 } from "lucide-react";
 import { Header } from "@/components/landing/Header";
+import CTA from "@/components/landing/CTA";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import {
@@ -142,7 +143,7 @@ const Pricing = () => {
             <motion.div variants={fadeInVariants}>
               <Badge variant="secondary" className="text-sm">
                 <CreditCard className="w-3 h-3 mr-1" />
-                Simple Pricing
+                Attractive Pricing
               </Badge>
             </motion.div>
             <motion.h1 
@@ -612,57 +613,7 @@ const Pricing = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-blue-600 to-cyan-600">
-        <div className="container px-4 mx-auto text-center">
-          <motion.div 
-            className="max-w-3xl mx-auto space-y-6"
-            variants={staggerContainerVariants}
-            initial="hidden"
-            animate="visible"
-          >
-            <motion.h2 
-              className="text-3xl md:text-4xl font-bold text-white"
-              variants={fadeInVariants}
-            >
-              Ready to Get Started?
-            </motion.h2>
-            <motion.p 
-              className="text-xl text-blue-100"
-              variants={fadeInVariants}
-            >
-              Join thousands of teams who trust ProPlan for their project management needs.
-            </motion.p>
-            <motion.div 
-              className="flex flex-col sm:flex-row gap-4 justify-center"
-              variants={fadeInVariants}
-            >
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Button size="lg" variant="secondary" className="group">
-                  Start Free Trial
-                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </motion.div>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10">
-                  Contact Sales
-                </Button>
-              </motion.div>
-            </motion.div>
-            <motion.p 
-              className="text-sm text-blue-200"
-              variants={fadeInVariants}
-            >
-              No credit card required • 14-day free trial • Cancel anytime
-            </motion.p>
-          </motion.div>
-        </div>
-      </section>
+      <CTA />
     </motion.div>
   );
 };

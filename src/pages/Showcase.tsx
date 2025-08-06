@@ -13,6 +13,7 @@ import {
   Target
 } from "lucide-react";
 import { Header } from "@/components/landing/Header";
+import CTA from "@/components/landing/CTA";
 import heroImage from "@/assets/hero-image.jpg";
 import heroImage2 from "@/assets/hero-image-2.png";
 import heroImage3 from "@/assets/hero-image-3.png";
@@ -385,30 +386,11 @@ const Showcase = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-blue-600 to-cyan-600">
-        <div className="container px-4 mx-auto text-center">
-          <div className="max-w-3xl mx-auto space-y-6">
-            <h2 className="text-3xl md:text-4xl font-bold text-white">
-              Ready to Transform Your Project Management?
-            </h2>
-            <p className="text-xl text-blue-100">
-              Join thousands of teams who have already improved their productivity with ProPlan.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" variant="secondary" className="group">
-                Start Free Trial
-                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10">
-                Schedule Demo
-              </Button>
-            </div>
-            <p className="text-sm text-blue-200">
-              No credit card required • 14-day free trial • Cancel anytime
-            </p>
-          </div>
-        </div>
-      </section>
+      <CTA 
+        title="Ready to Transform Your Project Management?"
+        description="Join thousands of teams who have already improved their productivity with ProPlan."
+        secondaryButtonText="Schedule Demo"
+      />
     </motion.div>
   );
 };
