@@ -16,6 +16,7 @@ import {
   CheckCircle,
 } from "lucide-react";
 import { Header } from "@/components/landing/Header";
+import CTA from "@/components/landing/CTA";
 import { motion } from "framer-motion";
 import {
   fadeInVariants,
@@ -586,52 +587,13 @@ const About = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-white">
-        <div className="container px-4 mx-auto text-center">
-          <motion.div 
-            className="max-w-3xl mx-auto space-y-6"
-            variants={staggerContainerVariants}
-            initial="hidden"
-            animate="visible"
-          >
-            <motion.h2 
-              className="text-3xl font-bold text-gray-900"
-              variants={fadeInVariants}
-            >
-              Join Our Mission
-            </motion.h2>
-            <motion.p 
-              className="text-lg text-gray-600"
-              variants={fadeInVariants}
-            >
-              Ready to experience the future of project management? Start your journey with ProPlan
-              today.
-            </motion.p>
-            <motion.div 
-              className="flex flex-col sm:flex-row gap-4 justify-center"
-              variants={fadeInVariants}
-            >
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Button size="lg" className="group">
-                  Start Free Trial
-                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </motion.div>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Button variant="outline" size="lg">
-                  Contact Sales
-                </Button>
-              </motion.div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
+      <CTA 
+        title="Join Our Mission"
+        description="Ready to experience the future of project management? Start your journey with ProPlan today."
+        className="bg-background"
+        primaryTextColor="text-gray-900"
+        secondaryTextColor="text-blue-800"
+      />
     </motion.div>
   );
 };
