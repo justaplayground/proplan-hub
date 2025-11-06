@@ -11,7 +11,7 @@ permissions:
 
 env:
   ORIGIN_SERVER_NAME: 'justdemo.work'
-  PROJECT_NAME: 'proplan-hub'
+  PROJECT_NAME: 'proplan'
   # BASE_API_URL: "/api"
 
 jobs:
