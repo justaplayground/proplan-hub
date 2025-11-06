@@ -12,6 +12,7 @@ permissions:
 env:
   ORIGIN_SERVER_NAME: "justdemo.work"
   PROJECT_NAME: "proplan-hub"
+  BASE_URL: "/proplan-hub/"
   # BASE_API_URL: "/api"
 
 jobs:
@@ -34,6 +35,8 @@ jobs:
           # Replace placeholder with actual project name
           sed -i "s/\${PROJECT_NAME}/${{ env.PROJECT_NAME }}/g" nginx.modular.conf
           cp nginx.modular.conf dist/
+          # Add env file to dist
+          echo "VITE_BASE_URL=${{ env.BASE_URL }}" > dist/.env
 
       - name: Upload built artifacts
         uses: actions/upload-artifact@v4

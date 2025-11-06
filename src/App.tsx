@@ -23,7 +23,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter basename="/proplan-hub">
+      <BrowserRouter basename={import.meta.env.VITE_BASE_URL || "/"}>
         <ScrollToTop />
         <AuthProvider>
           <Routes>
